@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        body {
+            background-color: #ddd;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 40px;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 5px solid red;
+        }
+
+        .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+        .br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        .box:hover .corner {
+            border-color: #FF00FF;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+            font-weight: normal;
+        }
+
+        a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="box">
+            <img src="star.jpg">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li.satu, li.news {
+            float: left;
+            margin-right: 3px;
+        }
+
+        a {
+            display: block;
+            width: 120px;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            border: 1px dotted grey;
+            background-color: white;
+        }
+
+        a:hover {
+            background-color: black;
+            color: white;
+        }
+
+        li.news ul {
+            display: none;
+            position: absolute;
+        }
+
+        li.news:hover ul {
+            display: block;
+        }
+
+        li.news ul li {
+            float: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<ul>
+    <li class="satu"><a href="#">Home</a></li>
+
+    <li class="news">
+        <a href="#">News</a>
+        <ul>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Music</a></li>
+            <li><a href="#">Movie</a></li>
+        </ul>
+    </li>
+
+    <li class="satu"><a href="#">Contact</a></li>
+    <li class="satu"><a href="#">About</a></li>
+</ul>
+
+</body>
+</html>
