@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        input {
+            margin: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 25px;
+            border: 2px solid black;
+        }
+    </style>
+
+    <script>
+        function count() {
+
+            var x = document.getElementById("a").value;
+            var y = document.getElementById("b").value;
+            var a = parseInt(x);
+            var b = parseInt(y);
+
+            if (isNaN(a) && isNaN(b)) {
+                alert("angka pertama dan kedua harus angka");
+            }
+            else if (isNaN(a)) {
+                alert("angka pertama bukan angka");
+            }
+            else if (isNaN(b)) {
+                alert("angka kedua harus angka");
+            }
+            else {
+                document.getElementById("a1").innerHTML = a;
+                document.getElementById("a2").innerHTML = a;
+                document.getElementById("b1").innerHTML = b;
+                document.getElementById("b2").innerHTML = b;
+                document.getElementById("hasil1").innerHTML = a + b;
+                document.getElementById("hasil2").innerHTML = a - b;
+            }
+        }
+    </script>
+</head>
+<body>
+Angka Pertama :
+<input type="text" id="a"><br>
+Angka Kedua :
+<input type="text" id="b"><br>
+<button onclick="count()">Count</button>
+<table>
+    <tr>
+        <td id="a1"></td>
+        <td>+</td>
+        <td id="b1"></td>
+        <td>=</td>
+        <td id="hasil1"></td>
+    </tr>
+    <tr>
+        <td id="a2"></td>
+        <td>-</td>
+        <td id="b2"></td>
+        <td>=</td>
+        <td id="hasil2"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        table {
+            border: 2px solid gray;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        .label {
+            color: blue;
+            font-weight: bold;
+        }
+        input, select {
+            font-size: 16px;
+        }
+        button {
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+        function proses() {
+            var input = document.getElementById("input").value;
+            var mode = document.getElementById("mode").value;
+            var output = "";
+            if (mode == "decbin") {
+                var angka = parseInt(input);
+                if (isNaN(angka) || angka < 0 || angka > 255) {
+                    alert("Input harus angka 0 sampai 255");
+                    return;
+                }
+                var temp = angka;
+                while (temp > 0) {
+                    output = (temp % 2) + output;
+                    temp = parseInt(temp / 2);
+                }
+
+                while (output.length < 8) {
+                    output = "0" + output;
+                }
+
+                if (angka == 0) {
+                    output = "00000000";
+                }
+            }
+            else {
+
+                if (input.length != 8 || /[^01]/.test(input)) {
+                    alert("Input harus 8 digit biner (0 atau 1)");
+                    return;
+                }
+                var hasil = 0;
+                for (var i = 0; i < 8; i++) {
+                    hasil += parseInt(input[i]) * Math.pow(2, 7 - i);
+                }
+                output = hasil;
+            }
+            document.getElementById("output").value = output;
+        }
+        function resetForm() {
+            document.getElementById("input").value = "";
+            document.getElementById("output").value = "";
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td class="label">Input :</td>
+        <td><input type="text" id="input"></td>
+    </tr>
+    <tr>
+        <td class="label">Output :</td>
+        <td><input type="text" id="output" readonly></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <select id="mode">
+                <option value="decbin">decimal-biner</option>
+                <option value="bindec">biner-decimal</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <button onclick="proses()">PROSES</button>
+            <button onclick="resetForm()">RESET</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
