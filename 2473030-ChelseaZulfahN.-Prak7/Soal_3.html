@@ -1,0 +1,166 @@
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        .kotakUtama {
+            width: 440px;
+            border: 3px solid black;
+            padding: 12px;
+            margin: 20px;
+            box-shadow: 4px 4px 8px gray;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+            font-size: 28px;
+        }
+        .inputData {
+            width: 250px;
+            height: 35px;
+            font-size: 24px;
+        }
+        .btnTambah {
+            width: 70px;
+            height: 40px;
+            font-size: 20px;
+        }
+        .pilihOperasi {
+            width: 220px;
+            height: 40px;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        var dataAngka = new Array();
+        function tambahData() {
+            var isi = document.getElementById("inputAngka").value;
+            if (isi == "") {
+                alert("data harus diisi");
+                return;
+            }
+
+            if (isNaN(isi)) {
+                alert("data harus angka");
+                return;
+            }
+            dataAngka.push(parseInt(isi, 10));
+            document.getElementById("inputAngka").value = "";
+            document.getElementById("inputAngka").focus();
+        }
+        function prosesData() {
+            var pilihan = document.getElementById("menuOperasi").value;
+            var hasil = "";
+
+            if (pilihan == "display") {
+                hasil = dataAngka.join(", ");
+            }
+            else if (pilihan == "count") {
+                hasil = dataAngka.length;
+            }
+            else if (pilihan == "sum") {
+                var total = 0;
+                for (var i = 0; i < dataAngka.length; i++) {
+                    total = total + dataAngka[i];
+                }
+                hasil = total;
+            }
+            else if (pilihan == "average") {
+                var total = 0;
+                for (var i = 0; i < dataAngka.length; i++) {
+                    total = total + dataAngka[i];
+                }
+
+                if (dataAngka.length == 0) {
+                    hasil = 0;
+                } else {
+                    hasil = total / dataAngka.length;
+                }
+            }
+            else if (pilihan == "max") {
+                if (dataAngka.length == 0) {
+                    hasil = "";
+                } else {
+                    var max = dataAngka[0];
+                    for (var i = 1; i < dataAngka.length; i++) {
+                        if (dataAngka[i] > max) {
+                            max = dataAngka[i];
+                        }
+                    }
+                    hasil = max;
+                }
+            }
+            else if (pilihan == "min") {
+                if (dataAngka.length == 0) {
+                    hasil = "";
+                } else {
+                    var min = dataAngka[0];
+                    for (var i = 1; i < dataAngka.length; i++) {
+                        if (dataAngka[i] < min) {
+                            min = dataAngka[i];
+                        }
+                    }
+                    hasil = min;
+                }
+            }
+            else if (pilihan == "ganjil") {
+                var dataGanjil = new Array();
+                for (var i = 0; i < dataAngka.length; i++) {
+                    if (dataAngka[i] % 2 != 0) {
+                        dataGanjil.push(dataAngka[i]);
+                    }
+                }
+                hasil = dataGanjil.join(", ");
+            }
+            else if (pilihan == "genap") {
+                var dataGenap = new Array();
+                for (var i = 0; i < dataAngka.length; i++) {
+                    if (dataAngka[i] % 2 == 0) {
+                        dataGenap.push(dataAngka[i]);
+                    }
+                }
+                hasil = dataGenap.join(", ");
+            }
+            else if (pilihan == "hapus") {
+                dataAngka = new Array();
+                hasil = "";
+            }
+            document.getElementById("hasilOutput").value = hasil;
+        }
+    </script>
+</head>
+<body>
+<div class="kotakUtama">
+    <table>
+        <tr>
+            <td>Data</td>
+            <td><input type="text" id="inputAngka" class="inputData"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Add" class="btnTambah" onclick="tambahData()">
+            </td>
+            <td>
+                <select id="menuOperasi" class="pilihOperasi" onchange="prosesData()">
+                    <option value="">Pilih Operasi</option>
+                    <option value="display">Display</option>
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="average">Average</option>
+                    <option value="max">Max</option>
+                    <option value="min">Min</option>
+                    <option value="ganjil">Ganjil</option>
+                    <option value="genap">Genap</option>
+                    <option value="hapus">Hapus</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Hasil</td>
+            <td><input type="text" id="hasilOutput" class="inputData" readonly></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

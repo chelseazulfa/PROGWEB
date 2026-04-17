@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        .inputJudul {
+            width: 250px;
+        }
+        .textareaDeskripsi {
+            width: 250px;
+            height: 100px;
+            resize: none;
+            overflow-y: scroll;
+        }
+        .jmlKarakter {
+            width: 60px;
+            text-align: right;
+        }
+        .rataAtas {
+            vertical-align: top;
+        }
+    </style>
+    <script>
+        function hitungKarakter(txt){
+            var isiText = txt.value;
+            if(isiText.length > 256){
+                txt.value = isiText.substring(0,256);
+            }
+            document.getElementById("jmlKarakter").value = txt.value.length + "/256";
+        }
+    </script>
+</head>
+<body>
+<table>
+<tr>
+    <td>Judul</td>
+    <td>:</td>
+    <td><input type="text" class="inputJudul"></td>
+</tr>
+<tr>
+    <td class="rataAtas">Deskripsi</td>
+    <td class="rataAtas">:</td>
+    <td>
+        <textarea class="textareaDeskripsi"
+            onkeyup="hitungKarakter(this)" 
+            onkeydown="hitungKarakter(this)"></textarea>
+        <br>
+        <input type="text" id="jmlKarakter" class="jmlKarakter" value="0/256" readonly>
+    </td>
+</tr>
+</table>
+</body>
+</html>

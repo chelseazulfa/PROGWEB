@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+            box-shadow: 4px 4px 10px gray;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            font-size: 26px;
+        }
+        th {
+            background-color: #d9e2d0;
+            text-align: left;
+        }
+        .warnaBiru {
+            background-color: #9fc0eb;
+        }
+        .warnaOrange {
+            background-color: #f4c7a1;
+        }
+        .warnaHover {
+            background-color: #CCFFAA;
+        }
+    </style>
+    <script>
+        function masukBaris(idBaris) {
+            document.getElementById(idBaris).className = "warnaHover";
+        }
+
+        function keluarBaris(idBaris, warnaAwal) {
+            document.getElementById(idBaris).className = warnaAwal;
+        }
+    </script>
+</head>
+<body>
+<table>
+<tr>
+    <th>Position</th>
+    <th>Programming Language</th>
+    <th>Ratings</th>
+</tr>
+<tr id="baris1" class="warnaBiru" 
+    onmouseover="masukBaris('baris1')" 
+    onmouseout="keluarBaris('baris1','warnaBiru')">
+    <td>1</td><td>C</td><td>18.058%</td>
+</tr>
+<tr id="baris2" class="warnaOrange" 
+    onmouseover="masukBaris('baris2')" 
+    onmouseout="keluarBaris('baris2','warnaOrange')">
+    <td>2</td><td>Java</td><td>18.051%</td>
+</tr>
+<tr id="baris3" class="warnaBiru" 
+    onmouseover="masukBaris('baris3')" 
+    onmouseout="keluarBaris('baris3','warnaBiru')">
+    <td>3</td><td>C++</td><td>9.707%</td>
+</tr>
+<tr id="baris4" class="warnaOrange" 
+    onmouseover="masukBaris('baris4')" 
+    onmouseout="keluarBaris('baris4','warnaOrange')">
+    <td>4</td><td>PHP</td><td>9.662%</td>
+</tr>
+<tr id="baris5" class="warnaBiru" 
+    onmouseover="masukBaris('baris5')" 
+    onmouseout="keluarBaris('baris5','warnaBiru')">
+    <td>5</td><td>Visual Basic</td><td>6.392%</td>
+</tr>
+</table>
+</body>
+</html>
