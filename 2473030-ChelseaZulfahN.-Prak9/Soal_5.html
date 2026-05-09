@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+</head>
+<body>
+    <script src="jquery-4.0.0.min.js"></script>
+    <style>
+        .kotakCari {
+            width: 320px;
+            margin: 40px auto;
+            padding: 10px;
+            box-shadow: 4px 4px 8px gray;
+        }
+        #cariNama {
+            width: 220px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .daftarPerusahaan div {
+            font-size: 18px;
+            margin-top: 3px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#cariNama").keyup(function(){
+                var kataCari = $("#cariNama").val();
+                $(".daftarPerusahaan div")
+                .css("color", "black");
+                if(kataCari != ""){
+                    $(".daftarPerusahaan div:contains('" + kataCari + "')")
+                    .css("color", "red");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="kotakCari">
+    <input type="text" id="cariNama">
+    <div class="daftarPerusahaan">
+        <div>Sun Microsystem</div>
+        <div>Apache Software Foundation</div>
+        <div>Oracle Coorporation</div>
+        <div>International Bussiness Machines</div>
+        <div>Microsoft Coorporation</div>
+        <div>Apple Inc</div>
+        <div>Sap Ag</div>
+        <div>Accenture</div>
+        <div>Computer Sciences Coorporation</div>
+        <div>Google</div>
+        <div>Softbank</div>
+        <div>Yahoo</div>
+    </div>
+</div>
+</body>
+</html>

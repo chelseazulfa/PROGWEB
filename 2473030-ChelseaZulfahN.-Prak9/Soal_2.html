@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+</head>
+<body>
+    <script src="jquery-4.0.0.min.js"></script>
+    <style>
+        .kotak {
+            width: 290px;
+            padding: 8px;
+            margin: 20px;
+            border: 1px solid lightgray;
+            box-shadow: 4px 4px 8px gray;
+        }
+        #inputNama {
+            width: 150px;
+            font-size: 18px;
+        }
+        button {
+            font-size: 16px;
+        }
+        .daftar div {
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            $("#btnAdd").click(function(){
+
+                var nama = $("#inputNama").val();
+
+                if(nama != ""){
+                    $("<div>" + nama + "</div>").appendTo(".daftar");
+
+                    $("#inputNama").val("");
+                    $("#inputNama").focus();
+                }
+
+            });
+
+            $("#btnSearch").click(function(){
+
+                var cari = $("#inputNama").val();
+
+                $(".daftar div").css("text-decoration", "none");
+
+                if(cari != ""){
+                    $(".daftar div:contains('" + cari + "')")
+                    .css("text-decoration", "underline");
+                }
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div class="kotak">
+
+    <input type="text" id="inputNama">
+
+    <button id="btnAdd">Add</button>
+
+    <button id="btnSearch">Search</button>
+
+    <div class="daftar">
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+
+</div>
+
+</body>
+</html>
