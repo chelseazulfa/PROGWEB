@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+</head>
+<body>
+    <script src="jquery.js"></script>
+    <style>
+        .kotak {
+            width: 780px;
+            border: 1px solid black;
+            padding: 5px;
+            margin: 20px;
+        }
+        .baris {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        .judul {
+            border: 1px solid gray;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .isi {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        .footer {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        .linkWeb {
+            color: blue;
+            text-decoration: underline;
+        }
+        #btnLook {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function lihatData(){
+            $.ajax({
+                url: "SIJson.txt",
+                dataType: "text",
+                success: function(teks){
+                    teks = teks.replace(/;\s*$/, "");
+                    var data = eval("(" + teks + ")");
+                    var tampil = "";
+                    tampil += "<div class='judul'>";
+                    tampil += "<a class='linkWeb' href='" + data.link + "'>";
+                    tampil += data.title;
+                    tampil += "</a>";
+                    tampil += "</div>";
+                    tampil += "<div class='isi'>";
+                    $.each(data.items, function(i, matkul){
+                        tampil += "<a class='linkWeb' href='" + matkul.link + "'>";
+                        tampil += matkul.title;
+                        tampil += "</a>";
+                        tampil += "<br>";
+                        tampil += "By : ";
+                        tampil += matkul.author;
+                        tampil += " / ";
+                        tampil += "<i>";
+                        tampil += matkul.published;
+                        tampil += "</i>";
+                        tampil += "<br><br>";
+                        tampil += matkul.description;
+                        tampil += "<br><br>";
+                        tampil += "Universitas : ";
+                        tampil += "<a class='linkWeb' href='" + matkul.universitas.m + "'>";
+                        tampil += "Click Here";
+                        tampil += "</a>";
+                        tampil += "<br>";
+                        tampil += "Tag(s) : ";
+                        tampil += matkul.tags;
+                        tampil += "<br><br>";
+                    });
+                    tampil += "</div>";
+                    tampil += "<div class='footer'>";
+                    tampil += "©" + data.generator;
+                    tampil += "</div>";
+                    $("#hasil").html(tampil);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="kotak">
+    <div id="hasil">
+        <div class="baris">Title</div>
+        <div class="baris">Content</div>
+        <div class="baris">Generator</div>
+    </div>
+</div>
+<input type="button" id="btnLook" value="Look" onclick="lihatData()">
+</body>
+</html>

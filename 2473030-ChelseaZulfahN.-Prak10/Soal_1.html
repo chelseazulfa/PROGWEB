@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473030-Chelsea Zulfah Nabilla</title>
+</head>
+<body>
+    <script src="jquery.js"></script>
+    <style>
+        .kotak {
+            width: 360px;
+            border: 1px solid black;
+            padding: 8px;
+            margin: 20px;
+        }
+        .pilihan {
+            width: 200px;
+            border: 1px solid gray;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th {
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            padding: 3px;
+        }
+        td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#btnSearch").click(function(){
+                var kelas = $(":radio[name='kelas']:checked").val();
+                var file = "";
+                if(kelas == "all"){
+                    file = "nilai.js";
+                }
+                else if(kelas == "A"){
+                    file = "nilaiA.js";
+                }
+                else if(kelas == "B"){
+                    file = "nilaiB.js";
+                }
+                $.getJSON(file, function(data){
+                    var tampil = "";
+                    tampil += "<table id='tabelNilai'>";
+                    tampil += "<tr>";
+                    tampil += "<th>NRP</th>";
+                    tampil += "<th>NAMA</th>";
+                    tampil += "<th>KELAS</th>";
+                    tampil += "<th>NILAI AKHIR</th>";
+                    tampil += "</tr>";
+                    $.each(data.nilai, function(i, mhs){
+                        tampil += "<tr>";
+                        tampil += "<td>" + mhs.nrp + "</td>";
+                        tampil += "<td>" + mhs.nama + "</td>";
+                        tampil += "<td>" + mhs.kelas + "</td>";
+                        tampil += "<td>" + mhs.nilaiakhir + "</td>";
+                        tampil += "</tr>";
+                    });
+                    tampil += "</table>";
+                    $("#hasil").html(tampil);
+                    $("#tabelNilai tr:odd").css("background-color", "#FFFFCC");
+                    $("#tabelNilai tr:even").css("background-color", "#CCFFAA");
+                    $("#tabelNilai tr:first").css("background-color", "black");
+                    $("#tabelNilai tr:first").css("color", "white");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="kotak">
+    <b>
+        Selamat! Berikut adalah Daftar Mahasiswa yang mendapat<br>
+        Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024
+    </b>
+    <br><br>
+    <div class="pilihan">
+        <input type="radio" name="kelas" value="all" checked>All <br>
+        <input type="radio" name="kelas" value="A">Kelas A <br>
+        <input type="radio" name="kelas" value="B">Kelas B <br>
+        <input type="button" id="btnSearch" value="Search">
+    </div>
+    <div id="hasil">
+        <table>
+            <tr>
+                <th>NRP</th>
+                <th>NAMA</th>
+                <th>KELAS</th>
+                <th>NILAI AKHIR</th>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
